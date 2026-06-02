@@ -1,136 +1,101 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CBT Astronomi SMA</title>
-<style>
-body{font-family:Arial,sans-serif;margin:20px;background:#f4f4f4}
-.container{background:white;padding:20px;border-radius:10px}
-h1{text-align:center}
-.soal{margin-bottom:20px;padding:10px;border-bottom:1px solid #ddd}
-#timer{
-position:fixed;
-top:10px;
-right:10px;
-background:red;
-color:white;
-padding:10px;
-border-radius:5px;
-font-weight:bold;
-}
-button{
-padding:10px 20px;
-font-size:16px;
-}
-</style>
-</head>
-<body>
+["Apa arti Hai?","Tidak","Ya","Selamat tinggal","Pagi","B"],
 
-<div id="timer">30:00</div>
+["Bahasa Jepang mobil adalah?","Kuruma","Densha","Mizu","Hon","A"],
 
-<div class="container">
-<h1>CBT Astronomi SMA</h1>
+["Bahasa Jepang gunung adalah?","Kawa","Yama","Umi","Mori","B"],
 
-<label>Nama Peserta:</label><br>
-<input type="text" id="nama" style="width:100%;padding:8px"><br><br>
+["Bahasa Jepang laut adalah?","Yama","Mori","Umi","Sora","C"],
 
-<form id="quiz">
+["Bahasa Jepang kereta adalah?","Kuruma","Densha","Hikouki","Fune","B"],
 
-<script>
-const soal=[
-["Planet terbesar di Tata Surya adalah","Jupiter","Mars","Venus","Merkurius","A"],
-["Bintang pusat Tata Surya adalah","Matahari","Polaris","Sirius","Rigel","A"],
-["Planet terdekat dengan Matahari adalah","Merkurius","Venus","Mars","Bumi","A"],
-["Galaksi tempat Tata Surya berada adalah","Bima Sakti","Andromeda","Triangulum","Magellan","A"],
-["Satelit alami Bumi adalah","Bulan","Titan","Europa","Phobos","A"],
-["Planet yang memiliki cincin paling jelas adalah","Saturnus","Mars","Venus","Merkurius","A"],
-["Planet merah adalah","Mars","Jupiter","Venus","Uranus","A"],
-["Planet terpanas di Tata Surya adalah","Venus","Merkurius","Mars","Jupiter","A"],
-["Bulan memantulkan cahaya dari","Matahari","Bintang","Mars","Venus","A"],
-["Jumlah planet Tata Surya saat ini","8","9","7","10","A"],
-["Planet terbesar kedua","Saturnus","Neptunus","Uranus","Mars","A"],
-["Planet biru dikenal sebagai","Bumi","Mars","Venus","Merkurius","A"],
-["Astronot pertama di luar angkasa","Yuri Gagarin","Neil Armstrong","Buzz Aldrin","John Glenn","A"],
-["Manusia pertama di Bulan","Neil Armstrong","Yuri Gagarin","Alan Shepard","Buzz Aldrin","A"],
-["Gerhana Matahari terjadi saat","Bulan di antara Bumi dan Matahari","Bumi di antara Bulan dan Matahari","Mars menutupi Matahari","Venus menutupi Matahari","A"],
-["Gerhana Bulan terjadi saat","Bumi di antara Matahari dan Bulan","Bulan di antara Matahari dan Bumi","Mars di depan Bulan","Venus di depan Bulan","A"],
-["Planet dengan hari lebih panjang dari tahunnya","Venus","Mars","Jupiter","Bumi","A"],
-["Planet paling dingin","Uranus","Mars","Merkurius","Venus","A"],
-["Planet terjauh dari Matahari","Neptunus","Uranus","Saturnus","Jupiter","A"],
-["Komet tersusun dari","Es dan debu","Batu panas","Logam cair","Gas panas","A"],
-["Alat untuk melihat benda langit","Teleskop","Mikroskop","Barometer","Termometer","A"],
-["Lapisan atmosfer terluar","Eksosfer","Troposfer","Mesosfer","Stratosfer","A"],
-["Bintang terdekat dengan Bumi","Matahari","Proxima Centauri","Sirius","Betelgeuse","A"],
-["Satuan jarak bintang","Tahun Cahaya","Kilometer","Meter","AU","A"],
-["1 tahun cahaya adalah","Jarak cahaya dalam 1 tahun","Waktu 1 tahun","Kecepatan cahaya","Jarak Bumi-Bulan","A"],
-["Planet yang berputar miring hampir 98°","Uranus","Mars","Venus","Jupiter","A"],
-["Planet dengan Bintik Merah Besar","Jupiter","Mars","Saturnus","Neptunus","A"],
-["Planet terkecil","Merkurius","Mars","Venus","Bumi","A"],
-["Gaya yang menjaga planet mengorbit Matahari","Gravitasi","Magnet","Listrik","Gesekan","A"],
-["Bulan membutuhkan waktu sekitar ... mengelilingi Bumi","27 hari","7 hari","14 hari","365 hari","A"]
+["Apa arti Oyasuminasai?","Selamat pagi","Selamat siang","Selamat tidur","Terima kasih","C"]
+
 ];
 
-let html="";
-for(let i=0;i<soal.length;i++){
-html+=`<div class="soal">
-<p>${i+1}. ${soal[i][0]}</p>
-<label><input type="radio" name="q${i}" value="A"> ${soal[i][1]}</label><br>
-<label><input type="radio" name="q${i}" value="B"> ${soal[i][2]}</label><br>
-<label><input type="radio" name="q${i}" value="C"> ${soal[i][3]}</label><br>
-<label><input type="radio" name="q${i}" value="D"> ${soal[i][4]}</label><br>
-</div>`;
-}
-document.write(html);
-</script>
+const wadah = document.getElementById("soal");
 
-<button type="button" onclick="selesai()">Selesai Ujian</button>
+dataSoal.forEach((s,index)=>{
 
-</form>
+wadah.innerHTML += `
+<div class="question">
+<p><b>${index+1}. ${s[0]}</b></p>
 
-<h2 id="hasil"></h2>
+<label><input type="radio" name="q${index}" value="A"> ${s[1]}</label><br>
+
+<label><input type="radio" name="q${index}" value="B"> ${s[2]}</label><br>
+
+<label><input type="radio" name="q${index}" value="C"> ${s[3]}</label><br>
+
+<label><input type="radio" name="q${index}" value="D"> ${s[4]}</label>
+
 </div>
+`;
 
-<script>
+});
+
+function cekNilai(){
+
+let benar=0;
+
+dataSoal.forEach((s,index)=>{
+
+let pilih=document.querySelector(`input[name="q${index}"]:checked`);
+
+if(pilih && pilih.value===s[5]){
+benar++;
+}
+
+});
+
+let nilai=Math.round((benar/20)*100);
+
+let status=nilai>=70 ? "LULUS ✅" : "TIDAK LULUS ❌";
+
+document.getElementById("hasil").innerHTML=
+`Nilai Anda: ${nilai}<br>Status: ${status}`;
+
+if(nilai>=70){
+
+let nama=document.getElementById("nama").value || "Peserta";
+
+document.getElementById("sertifikat").style.display="block";
+
+document.getElementById("namaSertifikat").innerText=nama;
+
+document.getElementById("nilaiSertifikat").innerText=
+"Nilai: "+nilai;
+
+}
+
+}
+
 let waktu=1800;
 
 const timer=setInterval(()=>{
+
 let menit=Math.floor(waktu/60);
+
 let detik=waktu%60;
+
 document.getElementById("timer").innerHTML=
-menit+":"+(detik<10?"0":"")+detik;
+String(menit).padStart(2,'0')+":"+
+String(detik).padStart(2,'0');
+
 waktu--;
 
 if(waktu<0){
+
 clearInterval(timer);
-selesai();
+
+alert("Waktu habis!");
+
+cekNilai();
+
 }
+
 },1000);
 
-function selesai(){
-let benar=0;
-
-for(let i=0;i<soal.length;i++){
-let pilih=document.querySelector('input[name="q'+i+'"]:checked');
-if(pilih && pilih.value===soal[i][5]){
-benar++;
-}
-}
-
-let salah=30-benar;
-let nilai=(benar/30)*100;
-
-document.getElementById("hasil").innerHTML=
-`
-Nama: ${document.getElementById("nama").value}<br>
-Benar: ${benar}<br>
-Salah: ${salah}<br>
-Nilai: ${nilai.toFixed(0)}
-`;
-
-window.scrollTo(0,document.body.scrollHeight);
-}
 </script>
 
 </body>
-</html>
+</htm
