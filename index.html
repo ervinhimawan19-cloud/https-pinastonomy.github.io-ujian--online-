@@ -1,101 +1,246 @@
-["Apa arti Hai?","Tidak","Ya","Selamat tinggal","Pagi","B"],
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ujian Akhir Bahasa Jepang</title>
 
-["Bahasa Jepang mobil adalah?","Kuruma","Densha","Mizu","Hon","A"],
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f4f4f4;
+margin:20px;
+}
+.container{
+background:white;
+padding:20px;
+border-radius:10px;
+max-width:900px;
+margin:auto;
+}
+h1{text-align:center;}
+.soal{
+margin-bottom:15px;
+padding:10px;
+border-bottom:1px solid #ddd;
+}
+#timer{
+position:fixed;
+top:10px;
+right:10px;
+background:red;
+color:white;
+padding:10px;
+border-radius:5px;
+font-weight:bold;
+}
+button{
+padding:10px 20px;
+font-size:16px;
+}
+</style>
+</head>
 
-["Bahasa Jepang gunung adalah?","Kawa","Yama","Umi","Mori","B"],
+<body>
 
-["Bahasa Jepang laut adalah?","Yama","Mori","Umi","Sora","C"],
+<div id="timer">30:00</div>
 
-["Bahasa Jepang kereta adalah?","Kuruma","Densha","Hikouki","Fune","B"],
+<div class="container">
+<h1>Ujian Akhir Bahasa Jepang</h1>
 
-["Apa arti Oyasuminasai?","Selamat pagi","Selamat siang","Selamat tidur","Terima kasih","C"]
+<label>Nama Peserta:</label><br>
+<input type="text" id="nama" style="width:100%;padding:8px;"><br><br>
 
-];
+<form id="quiz">
 
-const wadah = document.getElementById("soal");
+<div class="soal">
+1. Arti "Ohayou Gozaimasu" adalah?<br>
+<input type="radio" name="q1" value="A"> Selamat Pagi<br>
+<input type="radio" name="q1" value="B"> Selamat Malam<br>
+<input type="radio" name="q1" value="C"> Terima Kasih<br>
+</div>
 
-dataSoal.forEach((s,index)=>{
+<div class="soal">
+2. Angka 1 dalam bahasa Jepang?<br>
+<input type="radio" name="q2" value="A"> Ichi<br>
+<input type="radio" name="q2" value="B"> Ni<br>
+<input type="radio" name="q2" value="C"> San<br>
+</div>
 
-wadah.innerHTML += `
-<div class="question">
-<p><b>${index+1}. ${s[0]}</b></p>
+<div class="soal">
+3. Arti "Arigatou"?<br>
+<input type="radio" name="q3" value="A"> Maaf<br>
+<input type="radio" name="q3" value="B"> Terima Kasih<br>
+<input type="radio" name="q3" value="C"> Halo<br>
+</div>
 
-<label><input type="radio" name="q${index}" value="A"> ${s[1]}</label><br>
+<div class="soal">
+4. Angka 2?<br>
+<input type="radio" name="q4" value="A"> Yon<br>
+<input type="radio" name="q4" value="B"> Ni<br>
+<input type="radio" name="q4" value="C"> Roku<br>
+</div>
 
-<label><input type="radio" name="q${index}" value="B"> ${s[2]}</label><br>
+<div class="soal">
+5. Angka 3?<br>
+<input type="radio" name="q5" value="A"> San<br>
+<input type="radio" name="q5" value="B"> Go<br>
+<input type="radio" name="q5" value="C"> Nana<br>
+</div>
 
-<label><input type="radio" name="q${index}" value="C"> ${s[3]}</label><br>
+<div class="soal">
+6. Arti "Sayonara"?<br>
+<input type="radio" name="q6" value="A"> Halo<br>
+<input type="radio" name="q6" value="B"> Sampai Jumpa<br>
+<input type="radio" name="q6" value="C"> Selamat Datang<br>
+</div>
 
-<label><input type="radio" name="q${index}" value="D"> ${s[4]}</label>
+<div class="soal">
+7. Angka 4?<br>
+<input type="radio" name="q7" value="A"> Yon<br>
+<input type="radio" name="q7" value="B"> Hachi<br>
+<input type="radio" name="q7" value="C"> Juu<br>
+</div>
+
+<div class="soal">
+8. Angka 5?<br>
+<input type="radio" name="q8" value="A"> Kyuu<br>
+<input type="radio" name="q8" value="B"> Go<br>
+<input type="radio" name="q8" value="C"> Nana<br>
+</div>
+
+<div class="soal">
+9. Arti "Konnichiwa"?<br>
+<input type="radio" name="q9" value="A"> Selamat Siang<br>
+<input type="radio" name="q9" value="B"> Selamat Pagi<br>
+<input type="radio" name="q9" value="C"> Selamat Tidur<br>
+</div>
+
+<div class="soal">
+10. Angka 10?<br>
+<input type="radio" name="q10" value="A"> Juu<br>
+<input type="radio" name="q10" value="B"> Ichi<br>
+<input type="radio" name="q10" value="C"> Kyuu<br>
+</div>
+
+<div class="soal">
+11. Arti "Hai"?<br>
+<input type="radio" name="q11" value="A"> Tidak<br>
+<input type="radio" name="q11" value="B"> Ya<br>
+<input type="radio" name="q11" value="C"> Terima Kasih<br>
+</div>
+
+<div class="soal">
+12. Arti "Iie"?<br>
+<input type="radio" name="q12" value="A"> Ya<br>
+<input type="radio" name="q12" value="B"> Tidak<br>
+<input type="radio" name="q12" value="C"> Maaf<br>
+</div>
+
+<div class="soal">
+13. Angka 6?<br>
+<input type="radio" name="q13" value="A"> Roku<br>
+<input type="radio" name="q13" value="B"> Hachi<br>
+<input type="radio" name="q13" value="C"> Juu<br>
+</div>
+
+<div class="soal">
+14. Angka 7?<br>
+<input type="radio" name="q14" value="A"> Nana<br>
+<input type="radio" name="q14" value="B"> Go<br>
+<input type="radio" name="q14" value="C"> Yon<br>
+</div>
+
+<div class="soal">
+15. Angka 8?<br>
+<input type="radio" name="q15" value="A"> Kyuu<br>
+<input type="radio" name="q15" value="B"> Hachi<br>
+<input type="radio" name="q15" value="C"> Roku<br>
+</div>
+
+<div class="soal">
+16. Angka 9?<br>
+<input type="radio" name="q16" value="A"> Kyuu<br>
+<input type="radio" name="q16" value="B"> Ichi<br>
+<input type="radio" name="q16" value="C"> San<br>
+</div>
+
+<div class="soal">
+17. Arti "Sumimasen"?<br>
+<input type="radio" name="q17" value="A"> Maaf/Permisi<br>
+<input type="radio" name="q17" value="B"> Terima Kasih<br>
+<input type="radio" name="q17" value="C"> Selamat Pagi<br>
+</div>
+
+<div class="soal">
+18. Arti "Oyasuminasai"?<br>
+<input type="radio" name="q18" value="A"> Selamat Malam<br>
+<input type="radio" name="q18" value="B"> Halo<br>
+<input type="radio" name="q18" value="C"> Sampai Jumpa<br>
+</div>
+
+<div class="soal">
+19. Bahasa Jepang "guru"?<br>
+<input type="radio" name="q19" value="A"> Sensei<br>
+<input type="radio" name="q19" value="B"> Gakusei<br>
+<input type="radio" name="q19" value="C"> Tomodachi<br>
+</div>
+
+<div class="soal">
+20. Bahasa Jepang "teman"?<br>
+<input type="radio" name="q20" value="A"> Sensei<br>
+<input type="radio" name="q20" value="B"> Tomodachi<br>
+<input type="radio" name="q20" value="C"> Hon<br>
+</div>
+
+<button type="button" onclick="nilai()">Selesai Ujian</button>
+
+</form>
+
+<div id="hasil"></div>
 
 </div>
-`;
 
-});
+<script>
+const jawaban=[
+"A","A","B","B","A",
+"B","A","B","A","A",
+"B","B","A","A","B",
+"A","A","A","A","B"
+];
 
-function cekNilai(){
+function nilai(){
+let skor=0;
 
-let benar=0;
-
-dataSoal.forEach((s,index)=>{
-
-let pilih=document.querySelector(`input[name="q${index}"]:checked`);
-
-if(pilih && pilih.value===s[5]){
-benar++;
+for(let i=1;i<=20;i++){
+let pilih=document.querySelector('input[name="q'+i+'"]:checked');
+if(pilih && pilih.value===jawaban[i-1]){
+skor+=5;
+}
 }
 
-});
-
-let nilai=Math.round((benar/20)*100);
-
-let status=nilai>=70 ? "LULUS ✅" : "TIDAK LULUS ❌";
+let nama=document.getElementById("nama").value;
 
 document.getElementById("hasil").innerHTML=
-`Nilai Anda: ${nilai}<br>Status: ${status}`;
-
-if(nilai>=70){
-
-let nama=document.getElementById("nama").value || "Peserta";
-
-document.getElementById("sertifikat").style.display="block";
-
-document.getElementById("namaSertifikat").innerText=nama;
-
-document.getElementById("nilaiSertifikat").innerText=
-"Nilai: "+nilai;
-
-}
-
+"<h2>Sertifikat Kelulusan</h2>"+
+"<p>Nama: <b>"+nama+"</b></p>"+
+"<p>Nilai: <b>"+skor+"</b></p>"+
+(skor>=75?"<h3>LULUS</h3>":"<h3>TIDAK LULUS</h3>");
 }
 
 let waktu=1800;
 
-const timer=setInterval(()=>{
-
+setInterval(()=>{
 let menit=Math.floor(waktu/60);
-
 let detik=waktu%60;
-
 document.getElementById("timer").innerHTML=
-String(menit).padStart(2,'0')+":"+
-String(detik).padStart(2,'0');
+menit+":"+String(detik).padStart(2,"0");
 
+if(waktu>0){
 waktu--;
-
-if(waktu<0){
-
-clearInterval(timer);
-
-alert("Waktu habis!");
-
-cekNilai();
-
 }
-
 },1000);
-
 </script>
 
 </body>
-</htm
+  </html>
